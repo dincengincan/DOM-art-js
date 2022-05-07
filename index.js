@@ -6,19 +6,21 @@ const radioOptions = document.querySelectorAll("input[type=radio]");
 const ctx = canvas.getContext("2d");
 
 const scale = 1;
-const rows = 30 * scale;
+const rows = 90 * scale;
 const columns = 40 * scale;
 
 let rangeValue = 100;
 
-function getVideo() {
-  navigator.mediaDevices
-    .getUserMedia({ video: { width: columns, height: rows }, audio: false })
-    .then((localMediaStream) => {
-      video.srcObject = localMediaStream;
-      video.play();
-    })
-    .catch((e) => console.error(e));
+async function getVideo() {
+  const stream = await navigator.mediaDevices.getUserMedia({
+    video: { width: columns, height: rows },
+    audio: false,
+  });
+
+  console.log(stream.getVideoTracks()[0].getSettings());
+
+  video.srcObject = stream;
+  video.play();
 }
 
 function paintToCanvas() {
