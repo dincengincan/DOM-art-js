@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Art</title>
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+      }
+      video,
+      canvas {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DOM Art</h1>
+    <label>Threshold: </label>
+    <input min="0" max="255" type="range" class="threshold-range" />
+    <label>Input type: </label>
+    <input type="radio" id="checkbox" value="checkbox" name="option" checked />
+    <label for="checkbox">checkbox</label>
+    <input type="radio" id="radio" value="radio" name="option" />
+    <label for="radio">radio</label>
+
+    <div class="container"></div>
+    <br />
+    <video class="player"></video>
+    <canvas class="photo"></canvas>
+    <script src="index.js"></script>
+  </body>
+</html>
