@@ -5,7 +5,7 @@ const inputContainer = document.querySelector(".container");
 const radioOptions = document.querySelectorAll("input[type=radio]");
 const ctx = canvas.getContext("2d");
 
-const scale = 4;
+const scale = 1;
 const rows = 30 * scale;
 const columns = 40 * scale;
 
