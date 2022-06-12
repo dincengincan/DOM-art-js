@@ -16,13 +16,36 @@
   </head>
   <body>
     <h1>DOM Art</h1>
-    <label>Threshold: </label>
-    <input min="0" max="255" type="range" class="threshold-range" />
-    <label>Input type: </label>
-    <input type="radio" id="checkbox" value="checkbox" name="option" checked />
-    <label for="checkbox">checkbox</label>
-    <input type="radio" id="radio" value="radio" name="option" />
-    <label for="radio">radio</label>
+    <div class="input-container">
+      <div>
+        <label>Threshold: </label>
+        <input min="0" max="255" type="range" class="threshold-range" />
+      </div>
+      <br />
+      <div>
+        <label>Input type: </label>
+        <input
+          type="radio"
+          id="checkbox"
+          value="checkbox"
+          name="option"
+          checked
+        />
+        <label for="checkbox">checkbox</label>
+        <input type="radio" id="radio" value="radio" name="option" />
+        <label for="radio">radio</label>
+      </div>
+      <br />
+      <div>
+        <label>Scale: </label>
+        <select name="scale">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    </div>
 
     <div class="container"></div>
     <br />

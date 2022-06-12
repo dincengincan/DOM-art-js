@@ -3,34 +3,32 @@ const canvas = document.querySelector(".photo");
 const range = document.querySelector(".threshold-range");
 const inputContainer = document.querySelector(".container");
 const radioOptions = document.querySelectorAll("input[type=radio]");
+const scale = document.querySelector("select");
 const ctx = canvas.getContext("2d");
 
-const scale = 1;
-const rows = 90 * scale;
-const columns = 40 * scale;
-
+let scaleValue = 1;
 let rangeValue = 100;
+const rows = 40;
+const columns = 40;
 
 async function getVideo() {
   const stream = await navigator.mediaDevices.getUserMedia({
-    video: { width: columns, height: rows },
+    video: { width: columns * scaleValue, height: rows * scaleValue },
     audio: false,
   });
-
   console.log(stream.getVideoTracks()[0].getSettings());
-
   video.srcObject = stream;
   video.play();
 }
 
 function paintToCanvas() {
   range.value = rangeValue;
-  generateInputs("checkbox");
 
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
 
   // canvas.style.height = "480px";
+  generateInputs("checkbox");
   renderInputs("checkbox");
 }
 
@@ -80,11 +78,15 @@ function generateInputs(inputType) {
   }
   container = document.createElement("div");
   container.classList.add("inputContainer");
+  container.style.lineHeight = "5px";
 
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
+  for (let i = 0; i < scaleValue * rows; i++) {
+    for (let j = 0; j < scaleValue * columns; j++) {
       const input = document.createElement("input");
       input.setAttribute("type", inputType);
+      input.style.width = "5px";
+      input.style.height = "5px";
+      input.style.margin = "1px";
 
       container.appendChild(input);
     }
@@ -96,6 +98,11 @@ function generateInputs(inputType) {
 
 function handleRangeChange(e) {
   rangeValue = e.target.value;
+}
+
+function handleScaleChange(e) {
+  scaleValue = Number(e.target.value);
+  getVideo();
 }
 
 function handleOptionChange(e) {
@@ -120,6 +127,7 @@ function handleOptionChange(e) {
 getVideo();
 video.addEventListener("canplay", paintToCanvas);
 range.addEventListener("change", handleRangeChange);
+scale.addEventListener("change", handleScaleChange);
 radioOptions.forEach((option) => {
   option.addEventListener("change", handleOptionChange);
 });
