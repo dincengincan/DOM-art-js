@@ -1,6 +1,6 @@
 # DOM Art
 
-This is an experimental project for getting familiar with image processing in JS.
+This is an experimental project for getting familiar with image processing in JS. Works on mobile devices too. 
 
 ## Features
 
